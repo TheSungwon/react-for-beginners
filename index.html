@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<span id="count">click count : 0</span>    
+<button id="btn">click</button>
+
+</body>
+
+<script>
+let count = 0;
+document.getElementById("btn").addEventListener("click",click);
+
+function click(){
+    count ++;
+    document.getElementById("count").innerText = `click count : ${count}`;
+}
+</script>
+</html>
