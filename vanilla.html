@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<div id="root">
+</div>
+
+</body>
+
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<!-- <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+    const div = document.getElementById("root");
+
+    // const rcBtn = React.createElement("button",
+    // {
+    //     onClick: ()=> console.log("btn click"),
+    //     style:{backgroundColor:"tomato"}
+    // }
+    // , "click me");
+    
+    // const h3 = React.createElement(
+    //     "h3",
+    //     {
+    //         onMouseEnter: ()=> console.log("h3 enter"),
+    //         id:"span",
+    //         style:{ color:"red"}
+    //     },
+    //     "hello world");
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // const title = (
+    //     <h3 id="title" onMouseEnter={()=> console.log("enter")}>Hello react</h3>
+    // )
+
+    // const button = (
+    //     <button id="btn" onClick={()=> console.log("click")} style={{backgroundColor:"tomato"}}> click this </button>
+    // )
+        
+    //     // const rcDiv = React.createElement("div", null, [h3, rcBtn]);
+    //     const rcDiv = React.createElement("div", null, [title, button]);
+    //     ReactDOM.render(rcDiv, div);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        // let count = 0;
+        
+        //변수명 시작 대문자로 소문자면 태그로 인식
+        // function Title() {
+        //     return(
+        //     <h3 id="title" onMouseEnter={()=> console.log("enter")}>Hello react</h3>
+        //     )
+        // }
+    
+        // const Button = ()=> (
+        //     <button id="btn" onClick={()=> console.log("click")} style={{backgroundColor:"tomato"}}> click this </button>
+        // );
+          
+            
+        // const Container = ()=> (
+        //     <div><Title /><Button /></div>
+        // );
+        ///////////////////////////////////////////////////////////////////////////
+
+        // function countUp(){
+        //     count++;
+        //     render();
+        // }
+
+        
+        
+        // function Container() {
+            
+        //     const [count, setCount] = React.useState(0);
+
+        //     // function add(){
+        //     //    return setCount(count + 1);
+        //     // }
+        //     const add = () =>{
+        //         // setCount(count+1); 얘 보다는 setCount함수에서 현재값 불러와 사용
+
+        //         // setCount(function(e){
+        //         //   console.log(e)
+        //         //   return e+1;   
+        //         // }) or
+        //         setCount((e)=>{
+        //             return e+1;
+        //         })
+
+        //     }
+        //     return (
+        //         <div>
+        //             <h3>Total Clicks: {count}</h3>
+        //             <button onClick={add}>CLICK</button>
+        //         </div>
+        //     )
+        // }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        function Container(){
+
+            const [mm, changeMM] = React.useState();
+            const changeM = (e)=> {
+                changeMM(e.target.value);
+            }
+
+            return (
+                <div>
+                    <h1 className="h1">Super Converter</h1>
+                    <label htmlFor="hours">hours</label>
+                    <input id="hours" placeholder="hours" type="number" />
+                    <label htmlFor="minutes">minutes</label>
+                    <input id="minutes" placeholder="minutes" type="number" value={mm} onChange={changeM}/>
+
+                    <h4>minutes convert {mm}</h4>
+                </div>
+
+            )
+        }
+
+        render();
+
+        function render(){
+            
+            ReactDOM.render(<Container/>, div);
+        }
+        // react18에서는 ReactDOM.createRoot(root).render(span); 이렇게 사용합니다.
+        // ReactDOM.render(span, root) 는 17버전
+</script>
+
+</html>
