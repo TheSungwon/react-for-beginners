@@ -102,62 +102,79 @@
 
         //////////////////////////////////////////////////////////////////////////////////////
 
-        function Minute(){
+        // function Minute(){
 
-            const [mm, changeMM] = React.useState(0);
-            const [flip, setFlip] = React.useState(false);
-            const changeM = (e)=> {
-                changeMM(e.target.value);
-            }
+        //     const [mm, changeMM] = React.useState(0);
+        //     const [flip, setFlip] = React.useState(false);
+        //     const changeM = (e)=> {
+        //         changeMM(e.target.value);
+        //     }
 
-            const reset = () => {
-                changeMM(0);
-            }
-            const onFlip = (e) =>{
-                reset();
-                setFlip(!flip);
-            }
+        //     const reset = () => {
+        //         changeMM(0);
+        //     }
+        //     const onFlip = (e) =>{
+        //         reset();
+        //         setFlip(!flip);
+        //     }
             
-            return (
-                <div>
-                    <h1 className="h1">Super Converter</h1>
-                    <label htmlFor="minutes">minutes</label>
-                    <input id="minutes" placeholder="minutes" type="number" value={!flip? mm:mm*60} onChange={changeM} disabled={flip}/>
-                    <label htmlFor="hours">hours</label>
-                    <input id="hours" placeholder="hours" type="number" value={!flip? Math.round(mm/60):mm} onChange={changeM} disabled={!flip}/>
+        //     return (
+        //         <div>
+        //             <h1 className="h1">Super Converter</h1>
+        //             <label htmlFor="minutes">minutes</label>
+        //             <input id="minutes" placeholder="minutes" type="number" value={!flip? mm:mm*60} onChange={changeM} disabled={flip}/>
+        //             <label htmlFor="hours">hours</label>
+        //             <input id="hours" placeholder="hours" type="number" value={!flip? Math.round(mm/60):mm} onChange={changeM} disabled={!flip}/>
 
-                    <button onClick={reset}>reset</button>
-                    <button onClick={onFlip}>flip</button>
+        //             <button onClick={reset}>reset</button>
+        //             <button onClick={onFlip}>flip</button>
 
-                </div>
+        //         </div>
 
-            )
+        //     )
+        // }
+
+        // function Killos(){
+        //     return(
+        //         <h1>Killos to Miles</h1>
+        //     )
+        // }
+
+        function Btn(props){
+            console.log(props);
+            return <button 
+            style={{
+                backgroundColor:"tomato",
+                color:"white",
+                padding:"10px 20px",
+                border:0,
+                borderRadius:"100px"
+            }}>save change</button>;
         }
-
-        function Killos(){
-            return(
-                <h1>Killos to Miles</h1>
-            )
-        }
-
         function App(){
-            const [index, setIndex] = React.useState(-1);
-            const onSelect = (e) =>{
-                setIndex(e.target.value);
-            }
-            console.log(index);
+            // const [index, setIndex] = React.useState(-1);
+            // const onSelect = (e) =>{
+            //     setIndex(e.target.value);
+            // }
+            // console.log(index);
+            // return(
+            //     <div>
+            //         <h1>super converter ~~</h1>
+            //         <select onChange={onSelect}>
+            //             <option value="-1">Select</option>
+            //             <option value="0">분</option>
+            //             <option value="1">거리</option>
+            //         </select>
+            //         <hr />
+            //         {index == -1 ? "Please Select Option" : null}
+            //         {index == 0 ? <Minute /> : null}
+            //     </div>
+            // )
+
             return(
                 <div>
-                    <h1>super converter ~~</h1>
-                    <select onChange={onSelect}>
-                        <option value="-1">Select</option>
-                        <option value="0">분</option>
-                        <option value="1">거리</option>
-                    </select>
-                    <hr />
-                    {index == -1 ? "Please Select Option" : null}
-                    {index == 0 ? <Minute /> : null}
-                    {index == 1 ? <Killos /> : null}
+                    <Btn banana="a" ee="hello"/>
+                    <Btn banana="b" ee="world"/>
                 </div>
             )
         }
