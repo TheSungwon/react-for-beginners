@@ -102,24 +102,63 @@
 
         //////////////////////////////////////////////////////////////////////////////////////
 
-        function Container(){
+        function Minute(){
 
-            const [mm, changeMM] = React.useState();
+            const [mm, changeMM] = React.useState(0);
+            const [flip, setFlip] = React.useState(false);
             const changeM = (e)=> {
                 changeMM(e.target.value);
             }
 
+            const reset = () => {
+                changeMM(0);
+            }
+            const onFlip = (e) =>{
+                reset();
+                setFlip(!flip);
+            }
+            
             return (
                 <div>
                     <h1 className="h1">Super Converter</h1>
-                    <label htmlFor="hours">hours</label>
-                    <input id="hours" placeholder="hours" type="number" />
                     <label htmlFor="minutes">minutes</label>
-                    <input id="minutes" placeholder="minutes" type="number" value={mm} onChange={changeM}/>
+                    <input id="minutes" placeholder="minutes" type="number" value={!flip? mm:mm*60} onChange={changeM} disabled={flip}/>
+                    <label htmlFor="hours">hours</label>
+                    <input id="hours" placeholder="hours" type="number" value={!flip? Math.round(mm/60):mm} onChange={changeM} disabled={!flip}/>
 
-                    <h4>minutes convert {mm}</h4>
+                    <button onClick={reset}>reset</button>
+                    <button onClick={onFlip}>flip</button>
+
                 </div>
 
+            )
+        }
+
+        function Killos(){
+            return(
+                <h1>Killos to Miles</h1>
+            )
+        }
+
+        function App(){
+            const [index, setIndex] = React.useState(-1);
+            const onSelect = (e) =>{
+                setIndex(e.target.value);
+            }
+            console.log(index);
+            return(
+                <div>
+                    <h1>super converter ~~</h1>
+                    <select onChange={onSelect}>
+                        <option value="-1">Select</option>
+                        <option value="0">분</option>
+                        <option value="1">거리</option>
+                    </select>
+                    <hr />
+                    {index == -1 ? "Please Select Option" : null}
+                    {index == 0 ? <Minute /> : null}
+                    {index == 1 ? <Killos /> : null}
+                </div>
             )
         }
 
@@ -127,13 +166,12 @@
 
         function render(){
             
-            ReactDOM.render(<Container/>, div);
+            ReactDOM.render(<App/>, div);
         }
 
         // react18에서는 ReactDOM.createRoot(root).render(span); 이렇게 사용합니다.
         // ReactDOM.render(span, root) 는 17버전
 
-        //git test
 </script>
 
 </html>
