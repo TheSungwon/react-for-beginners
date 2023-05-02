@@ -12,6 +12,7 @@
 <!-- <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 
 <script type="text/babel">
 
@@ -140,18 +141,28 @@
         //     )
         // }
 
-        function Btn(props){
-            console.log(props);
+        function Btn({text, fontSize = 30, change}){
+            
+            
             return <button 
+            onClick={change}
             style={{
                 backgroundColor:"tomato",
                 color:"white",
                 padding:"10px 20px",
                 border:0,
-                borderRadius:"100px"
-            }}>save change</button>;
+                borderRadius:"100px",
+                fontSize
+            }}>{text}</button>;
+        }
+
+        Btn.propTypes ={
+            text : PropTypes.string.isRequired,
+            fontSize : PropTypes.number
         }
         function App(){
+            const [name, setName] = React.useState("hello world");
+            const changeValue = ()=> setName("change Name");
             // const [index, setIndex] = React.useState(-1);
             // const onSelect = (e) =>{
             //     setIndex(e.target.value);
@@ -173,8 +184,8 @@
 
             return(
                 <div>
-                    <Btn banana="a" ee="hello"/>
-                    <Btn banana="b" ee="world"/>
+                    <Btn text={name} change={changeValue} fontSize={10}/>
+                    <Btn text="not rerender!!!"/>
                 </div>
             )
         }
