@@ -108,9 +108,40 @@ function App() {
 //   )
 ///////////////////////////////////////todo List .end  
 
+const [loading, setLoading] = useState(true);
+const [coin, setCoin] = useState([]);
 
 
+useEffect(()=>{
+  fetch("https://api.coinpaprika.com/v1/tickers").then((res)=> res.json())
+  .then((json)=> {
+    setCoin(json);
+    setLoading(false);
+  });
+}, []);
 
+console.log(coin);
+
+return (
+  <div>
+    <h1>The Coins !!! ({coin.length})</h1>
+    {loading? <strong>loading...</strong>:null}
+
+    <ul>
+      {coin.map((coin, index)=>
+      <li key={index}>{coin.name}({coin.symbol}) : ${coin.quotes.USD.price} USD</li>
+      )}
+    </ul>
+
+    <select>
+    
+      {coin.map((coin, index)=>
+      <option key={index}>{coin.name}({coin.symbol}) : ${coin.quotes.USD.price} USD</option>
+      )}
+    
+    </select>
+  </div>
+)
 
 }
 
