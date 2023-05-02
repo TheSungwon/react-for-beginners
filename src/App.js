@@ -45,30 +45,73 @@ function App() {
   // );
   ////////////////////////////////6.3 Recap ...  [userEffect] .end
 
-  const [showing, setShowing] = useState(false);
-  const onClick = () => setShowing((e)=>!e);
 
-  return (
-    <div>
-        {showing? <Hello /> : null}
-        <button onClick={onClick}>{showing? "Hide":"Show"}</button>
-    </div>
-  )
-}
+  ////////////////////////////////  6.4 CleanUp .start
+//   const [showing, setShowing] = useState(false);
+//   const onClick = () => setShowing((e)=>!e);
 
-function Hello(){
+//   return (
+//     <div>
+//         {showing? <Hello /> : null}
+//         <button onClick={onClick}>{showing? "Hide":"Show"}</button>
+//     </div>
+//   )
+// }
 
-  function bye(){
-    console.log("destroy");
-  }
+// function Hello(){
 
-  function hi(){
-    console.log("hi");
-    return bye;
-  }
+//   function bye(){
+//     console.log("destroy");
+//   }
 
-  useEffect(hi,[]);
-  return <h1>Hello world</h1>;
+//   function hi(){
+//     console.log("hi");
+//     return bye;
+//   }
+
+//   useEffect(hi,[]);
+//   return <h1>Hello world</h1>;
+////////////////////////////////  6.4 CleanUp .end
+
+
+///////////////////////////////////////todo List .start
+// const [toDo, setTodo] = useState("");
+// const [toDos, setTodos] = useState([]);
+
+// const onChnage = (e)=> setTodo(e.target.value);
+// const onSubmit = (e)=> {
+//   e.preventDefault();
+  
+//   if(toDo === ""){
+//     return;
+//   }
+//   setTodos((getTodos) => [toDo, ...getTodos]);
+//   setTodo("");
+// }
+// console.log(toDos);
+
+//   return (
+
+//     <div>
+//       <h1>todos Count ({toDos.length})</h1>
+//       <form onSubmit={onSubmit}>
+//         <input type="text" value={toDo} onChange={onChnage} value={toDo}></input>
+//         <button>add to do</button>
+//       </form>
+
+//       <hr/>
+//       <ul>
+//         {toDos.map((value, index)=> <li key={index}>{value}</li>)}
+//       </ul>
+
+//     </div>
+//   )
+///////////////////////////////////////todo List .end  
+
+
+
+
+
 }
 
 export default App;
