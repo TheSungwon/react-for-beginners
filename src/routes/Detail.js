@@ -37,7 +37,7 @@ function SetDetail({rating, img, genres}){
 
     return(
         <div>
-            <h1>{rating}</h1>
+            <h1>Rating is ... {rating}</h1>
             <img src={img} alt=""/>
             <ul>
                 {genres.map((e, i)=> <li key={i}>{e}</li>)}

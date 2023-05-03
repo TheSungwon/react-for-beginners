@@ -161,7 +161,7 @@ function App() {
 return (
   <Router>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route  path={process.env.PUBLIC_URL + "/"} element={<Home />} />
     </Routes>
     <Routes>
       <Route path="/movie/:id" element={<Detail />} />
