@@ -162,7 +162,9 @@ return (
   <Router>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/movie" element={<Detail />} />
+    </Routes>
+    <Routes>
+      <Route path="/movie/:id" element={<Detail />} />
     </Routes>
   </Router>
 );
